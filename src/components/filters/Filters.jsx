@@ -1,12 +1,14 @@
 import { SORTED_OPTIONS } from '../../constants/sortedOptions';
 import { StyledFilters } from './filters.styles';
 
-const Filters = ({ setFilterActive, setSortBy }) => {
+const Filters = ({ setFilterActive, setSortBy, setSearch }) => {
 	return (
 		<>
 			<StyledFilters>
 				<div>
-					<input type='text' />
+					<input type='text'
+					name='name'
+					onInput={event => setSearch(event.target.value)} />
 				</div>
 				<div>
 					<label htmlFor='only-active'>Sólo activos</label>
