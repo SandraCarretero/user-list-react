@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledForm = styled.form`
+const StyledFilters = styled.form`
 	width: 500px;
 	margin-inline: auto;
 	display: flex;
@@ -8,4 +8,4 @@ const StyledForm = styled.form`
 	justify-content: space-between;
 `;
 
-export { StyledForm };
+export { StyledFilters };
