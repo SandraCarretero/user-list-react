@@ -20,7 +20,7 @@ const ProfileDetails = ({
 				<span>Im {age}</span>
 				<span>My username is @{username}</span>
 				<span>You can contact me in {email}</span>
-				<span>My adress is: {address}</span>
+				<span>My address is: {address.street}, {address.city}, {address.zipCode}</span>
 				<span>You can call me at {phone}</span>
 				<button onClick={() => navigate('/')}>Volver a usuarios</button>
 			</StyledProfileDetails>
