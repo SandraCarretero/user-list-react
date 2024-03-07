@@ -3,6 +3,7 @@ import Filters from '../filters/Filters';
 import Users from '../users/Users';
 import { StyledTitle } from './container.styles';
 import { USERS } from '../../constants/users';
+import { normalizeString } from '../../utils/normalize-strings';
 
 const Container = () => {
 	const [filterActive, setFilterActive] = useState(false);
@@ -45,20 +46,19 @@ const sortUsers = (users, sortValue) => {
 	return usersCopy.sort((a, b) => a.name.localeCompare(b.name));
 };
 
-const normalizeString = name => {
-	return name.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-};
-
 const filteredUsersByName = (users, search) => {
 	if (!search) return [...users];
 
-	//
+	// Obtiene el valor del input y lo normaliza a minúsculas
 	const searchValue = normalizeString(search.toLowerCase());
 
+	// Filtra las personas cuyos nombres contienen el filtro
 	const filteredUsers = users.filter(user => {
-		const normalizeUserName = normalizeString(user.name);
+		// Normaliza el nombre a NFD y elimina los diacríticos
+		const normalizedUserName = normalizeString(user.name);
 
-		return normalizeUserName.toLowerCase().includes(searchValue);
+		// Compara el nombre normalizado con el valor de búsqueda normalizado
+		return normalizedUserName.toLowerCase().includes(searchValue);
 	});
 
 	return filteredUsers;

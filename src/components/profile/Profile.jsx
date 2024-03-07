@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
 	StyledActive,
 	StyledColumn,
@@ -8,7 +9,8 @@ import {
 	StyledUserName
 } from './profile.styles';
 
-const Profile = ({ profileImage, name, username, active }) => {
+const Profile = ({ profileImage, name, username, active, userId }) => {
+	const navigate = useNavigate();
 	return (
 		<>
 			<StyledProfile>
@@ -22,7 +24,7 @@ const Profile = ({ profileImage, name, username, active }) => {
 				<StyledActive $active={active}>
 					{active ? 'Activo' : 'Inactivo'}
 				</StyledActive>
-				<button>Ver detalles</button>
+				<button onClick={()=>navigate(`/user/${userId}`)}>Ver detalles</button>
 			</StyledProfile>
 		</>
 	);
